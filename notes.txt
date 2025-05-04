@@ -1,0 +1,34 @@
+curl -X GET http://localhost:8080/books
+
+curl -X GET http://localhost:8080/books/1
+
+curl -X POST http://localhost:8080/books \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "Clean Code",
+    "author": "Robert C. Martin",
+    "isbn": "9780132350884",
+    "yearPublished": 2008,
+    "dateRead": "2023-05-20",
+    "rating": 5,
+    "notes": "Excellent book about software craftsmanship"
+  }'
+
+  curl -X PUT http://localhost:8080/books/1 \
+    -H "Content-Type: application/json" \
+    -d '{
+      "id": 1,
+      "title": "1984",
+      "author": "George Orwell",
+      "isbn": "9780451524935",
+      "yearPublished": 1949,
+      "dateRead": "2023-01-15",
+      "rating": 5,
+      "notes": "A classic dystopian novel - updated notes"
+    }'
+
+    curl -X DELETE http://localhost:8080/books/5
+
+    curl -X GET http://localhost:8080/books/stats
+
+    http://localhost:8080/swagger-ui

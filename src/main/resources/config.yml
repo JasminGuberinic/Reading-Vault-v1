@@ -1,0 +1,43 @@
+# Server configuration
+server:
+  applicationConnectors:
+    - type: http
+      port: 8080
+  adminConnectors:
+    - type: http
+      port: 8081
+
+# Database configuration
+databaseUrl: jdbc:h2:mem:readingvault;DB_CLOSE_DELAY=-1;MODE=PostgreSQL #jdbc:h2:./readingvault;DB_CLOSE_DELAY=-1;AUTO_SERVER=TRUE
+databaseUser: sa
+databasePassword: ""
+
+# Connection pool configuration
+maxPoolSize: 10
+minIdle: 2
+idleTimeout: 60000
+connectionTimeout: 30000
+autoCommit: false
+transactionIsolation: TRANSACTION_REPEATABLE_READ
+
+# Swagger configuration
+swaggerBasePath: /
+
+# H2 Console configuration
+enableH2Console: true
+
+# Logging configuration
+logging:
+  level: INFO
+  loggers:
+    org.virtualcode: DEBUG
+  appenders:
+    - type: console
+      threshold: ALL
+      timeZone: UTC
+      target: stdout
+    - type: file
+      currentLogFilename: ./logs/readingvault.log
+      archivedLogFilenamePattern: ./logs/readingvault-%d.log.gz
+      archivedFileCount: 5
+      timeZone: UTC
