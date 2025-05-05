@@ -25,7 +25,9 @@ interface BookService {
     /**
      * Get a book by ID and User ID
      */
-    fun getBookById(id: Int,userId: Int): Book?
+    fun getBookById(id: Int, userId: Int): Book?
+
+    fun findByQRCode(qr: String, userId: Int): Book?
 
     /**
      * Add a new book

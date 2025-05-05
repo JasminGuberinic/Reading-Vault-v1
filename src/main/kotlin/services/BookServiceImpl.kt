@@ -34,6 +34,10 @@ class  BookServiceImpl @Inject constructor(private val bookRepository: BookRepos
         return bookRepository.findById(id, userId)
     }
 
+    override fun findByQRCode(qr: String, userId: Int): Book? {
+        return bookRepository.findByQRCode(qr, userId)
+    }
+
     /**
      * Add a new book
      */

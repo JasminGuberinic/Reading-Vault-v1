@@ -200,8 +200,7 @@ class BookResource @Inject constructor(private val bookService: BookService) {
     @GET
     @Path("/qr/{qrCode}")
     fun getBookByQrCode(@PathParam("qrCode") qrCode: String, @QueryParam("userId") userId: Int): Response {
-        val book = bookService.getAllBooks(userId)
-            .firstOrNull { it.qrCode == qrCode }
+        val book = bookService.findByQRCode(qrCode, userId)
         return if (book != null) {
             Response.ok(book.toDTO()).build()
         } else {

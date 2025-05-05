@@ -18,6 +18,8 @@ interface BookRepository {
      */
     fun findById(id: Int, userId: Int? = null): Book?
 
+    fun findByQRCode(qr: String, userId: Int? = null): Book?
+
     /**
      * Add a new book to the repository
      */

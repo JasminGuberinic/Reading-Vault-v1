@@ -45,6 +45,10 @@ class BookRepositoryImpl @Inject constructor(private val database: Database) : B
         Books.selectAll().where { Books.id eq id and (if (userId != null) Books.userId eq userId else Op.TRUE) }
     }.singleOrNull()?.toBook()
 
+    override fun findByQRCode(qr: String, userId: Int?): Book? = transaction {
+        Books.selectAll().where { Books.qrCode eq qr and (if (userId != null) Books.userId eq userId else Op.TRUE) }
+    }.singleOrNull()?.toBook()
+
     /**
      * Add a new book to the database
      */
